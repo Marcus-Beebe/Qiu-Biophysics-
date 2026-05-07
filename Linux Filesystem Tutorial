@@ -1,6 +1,8 @@
 # Navigating the Linux Filesystem
 
-If you've never used a Linux terminal before, the filesystem can feel foreign. There are no icons to click and everything looks like a wall of text. This guide will walk you through how Linux organizes its files and teach you the essential commands to find your way around.
+If you've never used a Linux terminal before, the filesystem can feel foreign. There are no icons to click and everything 
+looks like a wall of text. This guide will walk you through how Linux organizes its files and teach you the essential 
+commands to find your way around.
 
 ---
 
@@ -8,28 +10,33 @@ If you've never used a Linux terminal before, the filesystem can feel foreign. T
 
 ### Everything Starts at Root
 
-In Linux, the entire filesystem begins at a single point called the **root directory**, written as a single forward slash: `/`
+In Linux, the entire filesystem begins at a single point called the **root directory**, written as a single forward 
+slash: `/`
 
-It's like the trunk of a tree. Every file and folder on the system, no matter what hard drive or device it lives on, branches out from this one starting point.
+It's like the trunk of a tree. Every file and folder on the system, no matter what hard drive or device it lives on, 
+branches out from this one starting point.
 
-This is different from Windows, where each drive gets its own letter (`C:\`, `D:\`, etc.). In Linux, there is only one tree, and everything hangs off it.
+This is different from Windows, where each drive gets its own letter (`C:\`, `D:\`, etc.). In Linux, there is only one 
+tree, and everything hangs off it.
 
 ### The Home Directory
 
-When you log into a Linux system, you start in your **home directory**. This is your personal space where your files, settings, and documents live. It's written as:
+When you log into a Linux system, you start in your **home directory**. This is your personal space where your files, 
+settings, and documents live. It's written as:
 
 ```
 /home/yourusername
 ```
 
-For example, if your username is `ada`, your home directory is `/home/ada`. Linux also gives you a shorthand for this: the tilde symbol `~`. Whenever you see `~`, it means "my home directory."
+For example, if your username is `ada`, your home directory is `/home/ada`. Linux also gives you a shorthand for this: 
+the tilde symbol `~`. Whenever you see `~`, it means "my home directory."
 
 ### Key Directories and What They're For
 
 The Linux filesystem has a set of standard top-level directories. It helps to know what they're for when you encounter them.
 
 | Directory | What it contains |
-|---|---|
+|-----------|-----------------|
 | `/` | The root — the top of everything |
 | `/home` | Personal directories for each user |
 | `/root` | The home directory for the administrator (root user) |
@@ -41,7 +48,8 @@ The Linux filesystem has a set of standard top-level directories. It helps to kn
 | `/dev` | Representations of hardware devices |
 | `/mnt` | A place to access external drives or mounted filesystems |
 
-You'll spend most of your time inside `/home/yourusername`. The other directories belong to the system, and you generally don't need to modify them.
+You'll spend most of your time inside `/home/yourusername`. The other directories belong to the system, and you generally 
+don't need to modify them.
 
 ### Absolute vs. Relative Paths
 
@@ -52,7 +60,8 @@ A **path** is simply the address of a file or folder. There are two kinds:
 /home/ada/documents/report.txt
 ```
 
-**Relative paths** describe a location starting from wherever you currently are. If you're already inside `/home/ada`, you could refer to the same file as:
+**Relative paths** describe a location starting from wherever you currently are. If you're already inside `/home/ada`, you 
+could refer to the same file as:
 ```
 documents/report.txt
 ```
@@ -78,7 +87,7 @@ Now that you understand the structure, here are the commands you need to move ar
 pwd
 ```
 
-**Example output:**
+Example output:
 ```
 /home/ada
 ```
@@ -95,36 +104,31 @@ Use this whenever you're lost. It's the equivalent of asking "where am I?"
 ls
 ```
 
-**Example output:**
+Example output:
 ```
 Desktop  Documents  Downloads  Music  Pictures
 ```
 
-#### Useful options:
+**Useful options:**
 
-`ls -l` — **Long format.** Shows extra details like permissions, owner, size, and modification date.
-
+`ls -l` — Long format. Shows extra details like permissions, owner, size, and modification date.
 ```bash
 ls -l
 ```
-
 ```
-drwxr-xr-x  2 ada ada 4096 Apr 10 09:21 Documents
--rw-r--r--  1 ada ada 2048 Apr 18 14:05 notes.txt
+drwxr-xr-x 2 ada ada 4096 Apr 10 09:21 Documents
+-rw-r--r-- 1 ada ada 2048 Apr 18 14:05 notes.txt
 ```
 
-`ls -a` — **All files.** Shows hidden files too. In Linux, any file whose name starts with a dot (`.`) is hidden by default.
-
+`ls -a` — All files. Shows hidden files too. In Linux, any file whose name starts with a dot (`.`) is hidden by default.
 ```bash
 ls -a
 ```
-
 ```
 .  ..  .bashrc  .profile  Desktop  Documents
 ```
 
 `ls -la` — Combines both options, showing all files in long format. This is very commonly used.
-
 ```bash
 ls -la
 ```
@@ -141,9 +145,9 @@ cd Documents
 
 After running this, you're now inside the `Documents` folder.
 
-#### Important `cd` shortcuts:
+**Important `cd` shortcuts:**
 
-**Go home:**
+Go home:
 ```bash
 cd ~
 ```
@@ -153,22 +157,22 @@ cd
 ```
 Both take you back to your home directory from anywhere.
 
-**Go up one level (to the parent directory):**
+Go up one level (to the parent directory):
 ```bash
 cd ..
 ```
 
-**Go up two levels:**
+Go up two levels:
 ```bash
 cd ../..
 ```
 
-**Go to an absolute path:**
+Go to an absolute path:
 ```bash
 cd /etc
 ```
 
-**Go back to the previous directory you were in:**
+Go back to the previous directory you were in:
 ```bash
 cd -
 ```
@@ -186,7 +190,7 @@ mkdir projects
 
 This creates a folder called `projects` in your current location.
 
-**Create nested folders all at once** using the `-p` flag:
+Create nested folders all at once using the `-p` flag:
 ```bash
 mkdir -p projects/linux/notes
 ```
@@ -216,12 +220,12 @@ cp notes.txt backup_notes.txt
 
 This creates a copy of `notes.txt` called `backup_notes.txt` in the same directory.
 
-**Copy to a different directory:**
+Copy to a different directory:
 ```bash
 cp notes.txt Documents/notes.txt
 ```
 
-**Copy an entire directory** (use the `-r` flag, which stands for "recursive"):
+Copy an entire directory (use the `-r` flag, which stands for "recursive"):
 ```bash
 cp -r projects projects_backup
 ```
@@ -230,19 +234,19 @@ cp -r projects projects_backup
 
 ### `mv` — Move or Rename Files
 
-**What it does:** Moves a file to a new location, or renames it. Unlike `cp`, the original is gone after moving.
+**What it does:** Moves a file to a new location, or renames it. (Unlike `cp`, the original is gone after moving.)
 
-**Rename a file:**
+Rename a file:
 ```bash
 mv oldname.txt newname.txt
 ```
 
-**Move a file to a different directory:**
+Move a file to a different directory:
 ```bash
 mv notes.txt Documents/
 ```
 
-**Move and rename at the same time:**
+Move and rename at the same time:
 ```bash
 mv notes.txt Documents/my_notes.txt
 ```
@@ -257,12 +261,13 @@ mv notes.txt Documents/my_notes.txt
 rm oldfile.txt
 ```
 
-**Delete an entire directory and everything inside it** (use `-r` for recursive, and `-f` to skip confirmation prompts):
+Delete an entire directory and everything inside it (use `-r` for recursive, and `-f` to skip confirmation prompts):
 ```bash
 rm -rf old_folder
 ```
 
-> ⚠️ **Be careful with `rm -rf`.** It will delete everything in the specified folder without asking. Double-check what you're deleting before running this command.
+> ⚠️ **Be careful with `rm -rf`.** It will delete everything in the specified folder without asking. Double-check what 
+you're deleting before running this command.
 
 ---
 
@@ -286,7 +291,7 @@ This is great for quickly reading short files. For longer files, use `less` inst
 less long_document.txt
 ```
 
-- Use the **arrow keys** or **Page Up / Page Down** to scroll.
+- Use the arrow keys or Page Up / Page Down to scroll.
 - Press `q` to quit and return to the terminal.
 - Press `/` followed by a word to search within the file.
 
@@ -296,17 +301,16 @@ less long_document.txt
 
 **What it does:** Searches for files and directories by name, type, or other criteria.
 
-**Find a file by name:**
+Find a file by name:
 ```bash
 find ~ -name "notes.txt"
 ```
 This searches your entire home directory for a file named `notes.txt`.
 
-**Find all `.txt` files:**
+Find all `.txt` files:
 ```bash
 find ~ -name "*.txt"
 ```
-
 The `*` is a wildcard that matches anything.
 
 ---
@@ -348,14 +352,15 @@ cd ..
 pwd
 ```
 
-Work through these steps one at a time, and don't worry about making mistakes — the practice folder is yours to experiment with.
+Work through these steps one at a time, and don't worry about making mistakes — the practice folder is yours to 
+experiment with.
 
 ---
 
 ## Quick Reference Cheat Sheet
 
 | Command | What it does |
-|---|---|
+|---------|-------------|
 | `pwd` | Show current directory |
 | `ls` | List files in current directory |
 | `ls -la` | List all files with details |
